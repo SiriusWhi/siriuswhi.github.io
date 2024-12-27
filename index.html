@@ -5,8 +5,18 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>VenusCreativeDigital&#8211; Your Trusted Partner for Digital Transformation</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Transform your business with VenusCreativeDigital's innovative software solutions. We specialize in AI/ML, mobile apps, web development, and digital transformation services.">
+  <meta name="keywords" content="software development, AI/ML solutions, mobile apps, web development, digital transformation, technology consulting, custom software, app development, IT services, artificial intelligence">
+
+  <meta name="author" content="VenusCreativeDigital">
+  <meta name="language" content="English">
+
+  <meta property="og:title" content="VenusCreativeDigital - Innovative Software Solutions">
+  <meta property="og:description" content="Transform your business with cutting-edge AI/ML technologies, custom software development, and digital transformation services.">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:url" content="https://venuscreativedigital.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VenusCreativeDigital">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -26,6 +36,22 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "VenusCreativeDigital",
+      "url": "https://venuscreativedigital.com",
+      "logo": "assets/img/logo.png",
+      "description": "Leading provider of innovative software solutions and digital transformation services.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "contact@venuscreativedigital.com"
+      }
+    }
+  </script>
 </head>
 
 <body class="index-page">
@@ -738,7 +764,7 @@
             <li><a href="#about">About us</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#call-to-action">Privacy policy</a></li>
+            <li><a href="privacy-policy.html">Privacy policy</a></li>
           </ul>
         </div>
 
@@ -783,6 +809,73 @@
     </div>
 
   </footer>
+
+  <div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-content">
+      <div class="cookie-header">
+        <h4>Our site uses cookies 🍪</h4>
+      </div>
+      <p>Cookies enable the website to work as intended.</p>
+      <p>You can find more information about cookies from <a href="privacy-policy.html" class="link-primary">here</a>.</p>
+      <div class="cookie-buttons">
+        <button class="btn-outline" onclick="openPreferences()">Edit preferences</button>
+        <button class="btn-outline" onclick="acceptRequired()">Accept required</button>
+        <button class="btn-filled" onclick="acceptAll()">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="preferencesModal" class="preferences-modal">
+    <div class="preferences-content">
+      <div class="preferences-header">
+        <h3>🍪 Your preferences</h3>
+      </div>
+
+      <!-- Functional Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Functional cookies</h4>
+          <p>Functional cookies are necessary for the website to work properly. For example site navigation and accessing login restricted pages. The website will not work without these cookies.</p>
+        </div>
+        <div class="toggle-switch enabled" title="Required">
+          <input type="checkbox" checked disabled>
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <!-- Statistics Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Statistics cookies</h4>
+          <p>Statistics cookies allow us to better understand how users use our website, and therefore allow us to develop better products.</p>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="statisticsCookies">
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <!-- Advertisement Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Advertisement cookies</h4>
+          <p>Advertisement cookies allow us to provide the enduser with better advertisements, which brings value to thirdparty advertisers.</p>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="advertisingCookies">
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <div class="preferences-buttons">
+        <button class="btn-outline" onclick="closePreferences()">Close settings</button>
+        <button class="btn-filled" onclick="acceptSelected()">Accept selected</button>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

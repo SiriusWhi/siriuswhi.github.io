@@ -205,4 +205,78 @@
   }
   window.addEventListener('load', servicelistToggle);
   document.addEventListener('scroll', servicelistToggle);
+
+
+
 })();
+
+
+  // Open preferences modal
+  function openPreferences() {
+    document.getElementById('preferencesModal').style.display = 'flex';
+    document.getElementById('cookieConsent').style.display = 'none';
+  }
+  // window.addEventListener('load', openPreferences);
+  // document.addEventListener('scroll', openPreferences);
+
+  // Close preferences modal
+  function closePreferences() {
+    document.getElementById('preferencesModal').style.display = 'none';
+    document.getElementById('cookieConsent').style.display = 'block';
+  }
+  // window.addEventListener('load', closePreferences);
+  // document.addEventListener('scroll', closePreferences);
+
+  // Accept all cookies
+  function acceptAll() {
+    localStorage.setItem('cookieConsent', 'all');
+    localStorage.setItem('functionalCookies', 'true');
+    localStorage.setItem('statisticsCookies', 'true');
+    localStorage.setItem('advertisingCookies', 'true');
+    document.getElementById('cookieConsent').style.display = 'none';
+  }
+  // window.addEventListener('load', acceptAll);
+  // document.addEventListener('scroll', acceptAll);
+
+  // Accept only required cookies
+  function acceptRequired() {
+    localStorage.setItem('cookieConsent', 'required');
+    localStorage.setItem('functionalCookies', 'true');
+    localStorage.setItem('statisticsCookies', 'false');
+    localStorage.setItem('advertisingCookies', 'false');
+    document.getElementById('cookieConsent').style.display = 'none';
+  }
+  // window.addEventListener('load', acceptRequired);
+  // document.addEventListener('scroll', acceptRequired);
+
+  // Accept selected cookies
+  function acceptSelected() {
+    localStorage.setItem('cookieConsent', 'selected');
+    localStorage.setItem('functionalCookies', 'true');
+    localStorage.setItem('statisticsCookies',
+        document.getElementById('statisticsCookies').checked);
+    localStorage.setItem('advertisingCookies',
+        document.getElementById('advertisingCookies').checked);
+    document.getElementById('preferencesModal').style.display = 'none';
+    document.getElementById('cookieConsent').style.display = 'none';
+  }
+  // window.addEventListener('load', acceptSelected);
+  // document.addEventListener('scroll', acceptSelected);
+
+function checkCookieConsent() {
+  const cookieConsent = localStorage.getItem('cookieConsent');
+  if (!cookieConsent) {
+    document.getElementById('cookieConsent').style.display = 'block';
+  }
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    checkCookieConsent();
+
+    // Load saved preferences
+    const statisticsCookies = localStorage.getItem('statisticsCookies') === 'true';
+    const advertisingCookies = localStorage.getItem('advertisingCookies') === 'true';
+
+    document.getElementById('statisticsCookies').checked = statisticsCookies;
+    document.getElementById('advertisingCookies').checked = advertisingCookies;
+  });
