@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #2d465e; /* Color for headings, subheadings and title throughout the website */
@@ -2321,6 +2321,39 @@ section,
   margin-right: 8px;
   color: var(--accent-color);
 }
+
+.services-list .nav-link {
+  padding: 10px 0;
+  color: #333;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.services-list .nav-link.active {
+  color: #4154f1;
+  font-weight: 600;
+}
+
+.services-list .nav-link i {
+  transition: 0.3s;
+}
+
+.services-list .nav-link:hover i {
+  transform: translateX(5px);
+}
+
+.tab-content {
+  min-height: 500px;
+}
+
+.services-img {
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  height: 400px;
+}
+
 
 /*--------------------------------------------------------------
 # Starter Section Section
