@@ -286,6 +286,72 @@
 
   </footer>
 
+
+  <div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-content">
+      <div class="cookie-header">
+        <h4>Our site uses cookies 🍪</h4>
+      </div>
+      <p>Cookies enable the website to work as intended.</p>
+      <p>You can find more information about cookies from <a href="https://gdpr.eu/cookies/" target="_blank" class="link-primary">here</a>.</p>
+      <div class="cookie-buttons">
+        <button class="btn-outline" onclick="openPreferences()">Edit preferences</button>
+        <button class="btn-outline" onclick="acceptRequired()">Accept required</button>
+        <button class="btn-filled" onclick="acceptAll()">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="preferencesModal" class="preferences-modal">
+    <div class="preferences-content">
+      <div class="preferences-header">
+        <h3>🍪 Your preferences</h3>
+      </div>
+
+      <!-- Functional Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Functional cookies</h4>
+          <p>Functional cookies are necessary for the website to work properly. For example site navigation and accessing login restricted pages. The website will not work without these cookies.</p>
+        </div>
+        <div class="toggle-switch enabled" title="Required">
+          <input type="checkbox" checked disabled>
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <!-- Statistics Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Statistics cookies</h4>
+          <p>Statistics cookies allow us to better understand how users use our website, and therefore allow us to develop better products.</p>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="statisticsCookies">
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <!-- Advertisement Cookies -->
+      <div class="preference-item">
+        <div class="preference-info">
+          <h4>Advertisement cookies</h4>
+          <p>Advertisement cookies allow us to provide the enduser with better advertisements, which brings value to thirdparty advertisers.</p>
+        </div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="advertisingCookies">
+          <span class="slider"></span>
+        </div>
+      </div>
+
+      <div class="preferences-buttons">
+        <button class="btn-outline" onclick="closePreferences()">Close settings</button>
+        <button class="btn-filled" onclick="acceptSelected()">Accept selected</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
