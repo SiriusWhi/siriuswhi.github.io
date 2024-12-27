@@ -174,4 +174,35 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+
+  function servicelistToggle() {
+    // Get all nav links
+    const navLinks = document.querySelectorAll('.services-list .nav-link');
+
+    // Add click event listener to each link
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Remove active class from all links
+        navLinks.forEach(l => l.classList.remove('active'));
+
+        // Add active class to clicked link
+        this.classList.add('active');
+
+        // Show corresponding tab content
+        const tabId = this.getAttribute('data-bs-target');
+        const tabContent = document.querySelector(tabId);
+
+        if (tabContent) {
+          document.querySelectorAll('.tab-pane').forEach(pane => {
+            pane.classList.remove('show', 'active');
+          });
+          tabContent.classList.add('show', 'active');
+        }
+      });
+    });
+  }
+  window.addEventListener('load', servicelistToggle);
+  document.addEventListener('scroll', servicelistToggle);
 })();
