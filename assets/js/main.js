@@ -217,17 +217,12 @@
     document.getElementById('cookieConsent').style.display = 'none';
   }
 
-  // // Close preferences modal
-  // function closePreferences() {
-  //   document.getElementById('preferencesModal').style.display = 'none';
-  //   document.getElementById('cookieConsent').style.display = 'block';
-  // }
 
   function closePreferences() {
     document.querySelector('.preferences-content').parentElement.style.display = 'none';
   }
 
-// Accept all cookies
+  // Accept all cookies
   function acceptAll() {
     localStorage.setItem('cookieConsent', 'all');
     localStorage.setItem('functionalCookies', 'true');
@@ -301,3 +296,71 @@
       updatePreferences('advertising', this.checked);
     });
   });
+
+
+// Initialize EmailJS
+(function() {
+  // Replace with your EmailJS public key
+  emailjs.init("gCKfKIFeKaNHagEPv");
+})();
+
+// Form submission handler
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get form elements
+  const form = this;
+  const loadingIndicator = form.querySelector('.loading');
+  const errorMessage = form.querySelector('.error-message');
+  const sentMessage = form.querySelector('.sent-message');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  // Show loading indicator
+  loadingIndicator.classList.remove('d-none');
+  submitButton.disabled = true;
+
+  // Hide previous messages
+  errorMessage.classList.add('d-none');
+  sentMessage.classList.add('d-none');
+
+  // Prepare template parameters
+  const templateParams = {
+    from_name: document.getElementById('name').value,
+    from_email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value
+  };
+
+  // Send email using EmailJS
+  emailjs.send(
+      'service_3h6ltlq', // Replace with your EmailJS service ID
+      'template_t53gzyr', // Replace with your EmailJS template ID
+      templateParams
+  )
+      .then(function(response) {
+        // Hide loading indicator
+        loadingIndicator.classList.add('d-none');
+
+        // Show success message
+        sentMessage.classList.remove('d-none');
+
+        // Reset form
+        form.reset();
+
+        // Re-enable submit button
+        submitButton.disabled = false;
+      })
+      .catch(function(error) {
+        // Hide loading indicator
+        loadingIndicator.classList.add('d-none');
+
+        // Show error message
+        errorMessage.textContent = 'Error sending message. Please try again later.';
+        errorMessage.classList.remove('d-none');
+
+        // Re-enable submit button
+        submitButton.disabled = false;
+
+        console.error('EmailJS error:', error);
+      });
+});

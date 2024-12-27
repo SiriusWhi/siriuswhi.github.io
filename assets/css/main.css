@@ -2656,3 +2656,57 @@ input:disabled + .slider {
   background: #5969f3;
   color: #fff;
 }
+
+
+/* Form Status Messages */
+.email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #059652;
+  border-top-color: #fff;
+  animation: animate-loading 1s linear infinite;
+}
+
+.email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #df1529;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+@keyframes animate-loading {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Show/Hide Helper Classes */
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
