@@ -216,18 +216,18 @@
     document.getElementById('preferencesModal').style.display = 'flex';
     document.getElementById('cookieConsent').style.display = 'none';
   }
-  // window.addEventListener('load', openPreferences);
-  // document.addEventListener('scroll', openPreferences);
 
-  // Close preferences modal
+  // // Close preferences modal
+  // function closePreferences() {
+  //   document.getElementById('preferencesModal').style.display = 'none';
+  //   document.getElementById('cookieConsent').style.display = 'block';
+  // }
+
   function closePreferences() {
-    document.getElementById('preferencesModal').style.display = 'none';
-    document.getElementById('cookieConsent').style.display = 'block';
+    document.querySelector('.preferences-content').parentElement.style.display = 'none';
   }
-  // window.addEventListener('load', closePreferences);
-  // document.addEventListener('scroll', closePreferences);
 
-  // Accept all cookies
+// Accept all cookies
   function acceptAll() {
     localStorage.setItem('cookieConsent', 'all');
     localStorage.setItem('functionalCookies', 'true');
@@ -246,37 +246,58 @@
     localStorage.setItem('advertisingCookies', 'false');
     document.getElementById('cookieConsent').style.display = 'none';
   }
-  // window.addEventListener('load', acceptRequired);
-  // document.addEventListener('scroll', acceptRequired);
 
   // Accept selected cookies
   function acceptSelected() {
-    localStorage.setItem('cookieConsent', 'selected');
-    localStorage.setItem('functionalCookies', 'true');
-    localStorage.setItem('statisticsCookies',
-        document.getElementById('statisticsCookies').checked);
-    localStorage.setItem('advertisingCookies',
-        document.getElementById('advertisingCookies').checked);
-    document.getElementById('preferencesModal').style.display = 'none';
-    document.getElementById('cookieConsent').style.display = 'none';
-  }
-  // window.addEventListener('load', acceptSelected);
-  // document.addEventListener('scroll', acceptSelected);
+    const preferences = {
+      functional: true, // Always required
+      statistics: document.getElementById('statisticsCookies').checked,
+      advertising: document.getElementById('advertisingCookies').checked
+    };
 
-function checkCookieConsent() {
-  const cookieConsent = localStorage.getItem('cookieConsent');
-  if (!cookieConsent) {
-    document.getElementById('cookieConsent').style.display = 'block';
+    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    closePreferences();
   }
-}
+
+  function checkCookieConsent() {
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    if (!cookieConsent) {
+      document.getElementById('cookieConsent').style.display = 'block';
+    }
+  }
+
+  function loadSavedPreferences() {
+    const preferences = JSON.parse(localStorage.getItem('cookiePreferences') || '{}');
+
+    if (preferences.statistics !== undefined) {
+      document.getElementById('statisticsCookies').checked = preferences.statistics;
+    }
+    if (preferences.advertising !== undefined) {
+      document.getElementById('advertisingCookies').checked = preferences.advertising;
+    }
+  }
+
+  function updatePreferences(type, value) {
+    const preferences = JSON.parse(localStorage.getItem('cookiePreferences') || '{}');
+    preferences[type] = value;
+    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+  }
 
   document.addEventListener('DOMContentLoaded', function() {
     checkCookieConsent();
 
-    // Load saved preferences
-    const statisticsCookies = localStorage.getItem('statisticsCookies') === 'true';
-    const advertisingCookies = localStorage.getItem('advertisingCookies') === 'true';
+    const statisticsSwitch = document.getElementById('statisticsCookies');
+    const advertisingSwitch = document.getElementById('advertisingCookies');
 
-    document.getElementById('statisticsCookies').checked = statisticsCookies;
-    document.getElementById('advertisingCookies').checked = advertisingCookies;
+    // Load saved preferences
+    loadSavedPreferences();
+
+    // Add change event listeners
+    statisticsSwitch.addEventListener('change', function() {
+      updatePreferences('statistics', this.checked);
+    });
+
+    advertisingSwitch.addEventListener('change', function() {
+      updatePreferences('advertising', this.checked);
+    });
   });
