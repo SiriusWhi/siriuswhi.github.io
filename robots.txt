@@ -1,0 +1,25 @@
+# Prevent all search engines from crawling the site
+User-agent: *
+Disallow: /
+
+# Prevent specific search engines
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+# Sitemap location (if you have one)
+# Sitemap: https://venuscreativedigital.com/sitemap.xml
