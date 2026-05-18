@@ -22,4 +22,4 @@ User-agent: YandexBot
 Disallow: /
 
 # Sitemap location (if you have one)
-# Sitemap: https://venuscreativedigital.com/sitemap.xml
+# Sitemap: https://venustech.org/sitemap.xml
